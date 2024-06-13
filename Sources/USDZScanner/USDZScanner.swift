@@ -1,13 +1,7 @@
-/*
-See the LICENSE.txt file for this sample’s licensing information.
-
-Abstract:
-Top-level SwiftUI container view for the entire app.
-*/
-
 import RealityKit
 import SwiftUI
 import os
+import UIKit
 
 @available(iOS 17.0, *)
 /// The root of the SwiftUI view graph.
@@ -79,9 +73,22 @@ private struct CircularProgressView: View {
             }
             Spacer()
         }
+        .background(HapticFeedbackHelper()) // Add the haptic feedback helper here
     }
 }
 
+struct HapticFeedbackHelper: UIViewRepresentable {
+    func makeUIView(context: Context) -> UIView {
+        let view = UIView()
+        DispatchQueue.main.async {
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.success)
+        }
+        return view
+    }
+
+    func updateUIView(_ uiView: UIView, context: Context) {}
+}
 
 #if DEBUG
 @available(iOS 17.0, *)

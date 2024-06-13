@@ -23,7 +23,7 @@ struct HelpPageView: View {
                         }},
                            label: {
                         Image(systemName: "xmark.circle.fill")
-                            .foregroundColor(.init(white: 0.7, opacity: 0.5))
+                            .foregroundColor(.init(green: 0.7, opacity: 0.5))
                             .font(.title)
                     })
                 }

@@ -68,26 +68,20 @@ private struct CircularProgressView: View {
             ZStack {
                 Spacer()
                 ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle(tint: colorScheme == .green))
+                    .progressViewStyle(CircularProgressViewStyle(tint: .green))
                 Spacer()
             }
             Spacer()
         }
-        .background(HapticFeedbackHelper()) // Add the haptic feedback helper here
-    }
-}
-
-struct HapticFeedbackHelper: UIViewRepresentable {
-    func makeUIView(context: Context) -> UIView {
-        let view = UIView()
-        DispatchQueue.main.async {
-            let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.success)
+        .onAppear {
+            triggerHapticFeedback()
         }
-        return view
     }
 
-    func updateUIView(_ uiView: UIView, context: Context) {}
+    private func triggerHapticFeedback() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+    }
 }
 
 #if DEBUG

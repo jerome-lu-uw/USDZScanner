@@ -68,7 +68,7 @@ private struct CircularProgressView: View {
             ZStack {
                 Spacer()
                 ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle(tint: .green))
+                    .progressViewStyle(CircularProgressViewStyle(tint: colorScheme == .light ? .black : .white))
                 Spacer()
             }
             Spacer()

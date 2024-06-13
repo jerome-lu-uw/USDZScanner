@@ -68,18 +68,22 @@ public struct USDZScanner: View {
 }
 
 private struct CircularProgressView: View {
-    @Environment(\.colorScheme) private var colorScheme
-
+    @State private var isActive = false
+    
     var body: some View {
         VStack {
             Spacer()
             ZStack {
                 Spacer()
                 ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle(tint: colorScheme == .light ? .black : .green))
+                    .progressViewStyle(CircularProgressViewStyle(tint: isActive ? .green : .white))
                 Spacer()
             }
             Spacer()
+        }
+        .onTapGesture {
+            // Toggle activation state when tapped
+            isActive.toggle()
         }
     }
 }
